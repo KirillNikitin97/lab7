@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{%block title%}Вход{% endblock %}
+{% block login %}
+<div>
+    <form action="/auth/login/" method="post" class="form-horizontal" >
+        {% csrf_token %}
+        <label for="username">Имя пользователя</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Пароль</label>
+        <input type="text" name="password" id="password">
+    <input class="button" type="submit" value="Войти">
+    </form>
+        {% if login_error %}
+            <label class="errors">{{ login_error }}</label>
+        {% endif %}
+    <div><a href="/auth/register/">Регистрация через UserRegisterForm</a></div>
+    <div class="col-sm-12"><a href="/auth/registration/">Регистрация через RegistionForm</a></div>
+</div>
+{% endblock %}
